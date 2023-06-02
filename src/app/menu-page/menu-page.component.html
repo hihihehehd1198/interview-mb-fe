@@ -1,0 +1,11 @@
+<!-- <ng-container *ngIf="nodes; else nodata"> -->
+<nz-tree
+  #nzTreeComponent
+  [nzData]="menuService.listMenuData()"
+  nzCheckable
+></nz-tree>
+<!-- </ng-container>
+
+<ng-template #nodata>
+  <h1>no data in display</h1>
+</ng-template> -->

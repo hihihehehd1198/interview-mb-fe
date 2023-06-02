@@ -1,0 +1,83 @@
+<ng-container *ngIf="formService.listLanguageOption">
+  <select
+    #selectValue
+    (change)="formService.switchLanguageForm(selectValue.value)"
+  >
+    <option [value]="item" *ngFor="let item of formService.listLanguageOption">
+      {{ item }}
+    </option>
+  </select>
+</ng-container>
+<ng-container *ngIf="formService.formInstance(); else noformInstance">
+  <div class="form-title">{{ formService.titleForm }}</div>
+  <form
+    [class]="'form-instance'"
+    nz-form
+    [nzLayout]="'inline'"
+    [formGroup]="formService.formInstance()"
+    (ngSubmit)="(formService.submitForm)"
+  >
+    <!-- <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your username!">
+        <input formControlName="" nz-input placeholder="Username" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your Password!">
+        <input
+          formControlName="password"
+          nz-input
+          type="password"
+          placeholder="Password"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="!formService.formInstance().valid"
+        >
+          Log in
+        </button>
+      </nz-form-control>
+    </nz-form-item> -->
+
+    <ng-container
+      *ngFor="
+        let formControl of formService.formInstance() | form;
+        let i = index
+      "
+    >
+      <nz-form-item>
+        <nz-form-control [class]="'form-control-instance'">
+          <label [for]="formControl"
+            >{{ formService.listLabelInput[i] || "test" }} :
+          </label>
+          <input
+            [id]="formControl"
+            [formControlName]="formControl"
+            nz-input
+            type="text"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </ng-container>
+
+    <nz-form-item>
+      <nz-form-control>
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="!formService.formInstance().valid"
+          (click)="getFormValue()"
+        >
+          {{ formService.buttonText }}
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</ng-container>
+
+<ng-template #noformInstance> no form control instance </ng-template>
