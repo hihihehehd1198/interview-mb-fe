@@ -80,4 +80,26 @@
   </form>
 </ng-container>
 
+<div class="stepper-background">
+  <h1>sample step with not using framework</h1>
+
+  <ng-container *ngIf="listStepItem.length">
+    <div class="stepper-group">
+      <button
+
+        *ngFor="let item of listStepItem; let i = index"
+        [class]="item.status ? 'enabled' : 'disabled'"
+        (click)="buttonClickStep(item, i)"
+      >
+        {{ item.title }}
+      </button>
+    </div>
+
+    <div class="stepper-group">
+      <button (click)="prevStep()">prev</button>
+      <button (click)="nextStep()">next</button>
+    </div>
+  </ng-container>
+</div>
+
 <ng-template #noformInstance> no form control instance </ng-template>
