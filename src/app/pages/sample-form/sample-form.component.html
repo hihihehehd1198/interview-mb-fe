@@ -86,10 +86,13 @@
   <ng-container *ngIf="listStepItem.length">
     <div class="stepper-group">
       <button
-
         *ngFor="let item of listStepItem; let i = index"
-        [class]="item.status ? 'enabled' : 'disabled'"
-        (click)="buttonClickStep(item, i)"
+        [ngClass]="{
+          select: current == i,
+          disabed: !item.status,
+          enabled: item.status
+        }"
+        (click)="gotoStep(i)"
       >
         {{ item.title }}
       </button>
