@@ -80,13 +80,19 @@
   </form>
 </ng-container>
 
-<div class="stepper-background">
-  <h1>sample step with not using framework</h1>
-
+<h1>sample step with not using framework</h1>
+<div #stepperBackground class="stepper-background">
   <ng-container *ngIf="listStepItem.length">
-    <div class="stepper-group">
+    <div *ngFor="let item of listStepItem; let i = index" class="stepper-group">
+      <div
+        #lineStep
+        [style.width]="lineWidth"
+        *ngIf="checkLineBefore(i)"
+        class="before-line line"
+      >
+        &nbsp;
+      </div>
       <button
-        *ngFor="let item of listStepItem; let i = index"
         [ngClass]="{
           select: current == i,
           disabed: !item.status,
@@ -96,6 +102,15 @@
       >
         {{ item.title }}
       </button>
+
+      <div
+        #lineStep
+        [style.width]="lineWidth"
+        *ngIf="checkLineAfter(i)"
+        class="line"
+      >
+        &nbsp;
+      </div>
     </div>
 
     <div class="stepper-group">
@@ -103,6 +118,7 @@
       <button (click)="nextStep()">next</button>
     </div>
   </ng-container>
+  <!-- <div class="line-container" #lineContainer></div> -->
 </div>
 
 <ng-template #noformInstance> no form control instance </ng-template>
