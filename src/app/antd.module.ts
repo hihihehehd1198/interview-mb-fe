@@ -76,8 +76,16 @@ import { NzGraphModule } from 'ng-zorro-antd/graph';
 import { NzCronExpressionModule } from 'ng-zorro-antd/cron-expression';
 import { NzQRCodeModule } from 'ng-zorro-antd/qr-code';
 import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
+import { StepperComponent } from './pages/stepper/stepper.component';
+import { CommonModule } from '@angular/common';
+import { StpperFlexComponent } from './pages/stpper-flex/stpper-flex.component';
 
 @NgModule({
+    declarations: [
+        StepperComponent,
+        StpperFlexComponent,
+    ],
+    imports: [CommonModule],
     exports: [
         NzAffixModule,
         NzAlertModule,
@@ -153,7 +161,9 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
         NzCodeEditorModule,
         NzGraphModule,
         NzQRCodeModule,
-        NzWaterMarkModule
+        NzWaterMarkModule,
+        StepperComponent,
+        StpperFlexComponent,
     ]
 })
 export class DemoNgZorroAntdModule {

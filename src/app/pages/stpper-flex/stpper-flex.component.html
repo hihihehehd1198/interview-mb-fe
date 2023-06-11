@@ -1,0 +1,44 @@
+<h1>sample step with not using framework</h1>
+<div #stepperBackground class="stepper-background">
+  <ng-container *ngIf="stepperService.listStepItem.length">
+    <div
+      *ngFor="let item of stepperService.listStepItem; let i = index"
+      class="stepper-group"
+    >
+      <!-- <div
+        #lineStep
+        [style.width]="lineWidth"
+        *ngIf="checkLineBefore(i)"
+        class="before-line line"
+      >
+        &nbsp;
+      </div> -->
+
+      <button
+        [ngClass]="{
+          select: stepperService.current == i,
+          disabed: !item.status,
+          enabled: item.status
+        }"
+        (click)="stepperService.gotoStep(i)"
+      >
+        {{ item.title }}
+      </button>
+      <hr *ngIf="checkLineAfter(i)" width="25vw" />
+      <!-- 
+      <div
+        #lineStep
+        [style.width]="lineWidth"
+        *ngIf="checkLineAfter(i)"
+        class="line"
+      >
+        &nbsp;
+      </div> -->
+    </div>
+  </ng-container>
+  <!-- <div class="line-container" #lineContainer></div> -->
+</div>
+<div class="stepper-group1">
+  <button (click)="stepperService.prevStep()">prev</button>
+  <button (click)="stepperService.nextStep()">next</button>
+</div>

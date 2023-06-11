@@ -28,7 +28,8 @@ registerLocaleData(vi);
 @NgModule({
   declarations: [
     AppComponent,
-    MenuPageComponent,//akjsgdhhjagd
+    MenuPageComponent,//akjsgdhhjagd,
+    
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, BrowserAnimationsModule, HttpClientJsonpModule, ReactiveFormsModule,
     DemoNgZorroAntdModule, AppRoutingModule, IconsProviderModule, NzLayoutModule, NzMenuModule],

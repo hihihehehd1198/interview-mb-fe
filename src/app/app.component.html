@@ -52,6 +52,12 @@
     <nz-content>
       <div class="inner-content">
         <router-outlet></router-outlet>
+        <app-stepper></app-stepper>
+        <!-- <app-stpper-flex></app-stpper-flex> -->
+        <div class="stepper-group1">
+          <button (click)="stepperService.prevStep()">prev</button>
+          <button (click)="checkStep()">next</button>
+        </div>
       </div>
     </nz-content>
   </nz-layout>

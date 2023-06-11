@@ -1,3 +1,4 @@
+<ng-template #noformInstance> no form control instance </ng-template>
 <ng-container *ngIf="formService.listLanguageOption">
   <select
     #selectValue
@@ -79,46 +80,3 @@
     </nz-form-item>
   </form>
 </ng-container>
-
-<h1>sample step with not using framework</h1>
-<div #stepperBackground class="stepper-background">
-  <ng-container *ngIf="listStepItem.length">
-    <div *ngFor="let item of listStepItem; let i = index" class="stepper-group">
-      <div
-        #lineStep
-        [style.width]="lineWidth"
-        *ngIf="checkLineBefore(i)"
-        class="before-line line"
-      >
-        &nbsp;
-      </div>
-      <button
-        [ngClass]="{
-          select: current == i,
-          disabed: !item.status,
-          enabled: item.status
-        }"
-        (click)="gotoStep(i)"
-      >
-        {{ item.title }}
-      </button>
-
-      <div
-        #lineStep
-        [style.width]="lineWidth"
-        *ngIf="checkLineAfter(i)"
-        class="line"
-      >
-        &nbsp;
-      </div>
-    </div>
-
-    <div class="stepper-group">
-      <button (click)="prevStep()">prev</button>
-      <button (click)="nextStep()">next</button>
-    </div>
-  </ng-container>
-  <!-- <div class="line-container" #lineContainer></div> -->
-</div>
-
-<ng-template #noformInstance> no form control instance </ng-template>
